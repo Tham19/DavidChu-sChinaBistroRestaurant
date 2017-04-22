@@ -1,0 +1,9 @@
+com/github/thamvannguyen/logging/LoggingContextHolder.class
+com/github/thamvannguyen/logging/dao/repository/LogDetailsRepository.class
+com/github/thamvannguyen/logging/dao/repository/LogRecordRepository.class
+com/github/thamvannguyen/logging/LogManager.class
+com/github/thamvannguyen/logging/dao/entity/LogRecord.class
+com/github/thamvannguyen/logging/dao/entity/LogLevel.class
+com/github/thamvannguyen/logging/dao/entity/LogDetails.class
+com/github/thamvannguyen/logging/AbstractLogManager.class
+com/github/thamvannguyen/logging/LogCache.class

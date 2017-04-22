@@ -1,0 +1,83 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd
+                   http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <changeSet author="caoky (generated)" id="1477582307969-1" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="User">
+            <column name="id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="username" type="VARCHAR(45)"/>
+            <column name="password" type="VARCHAR(255)"/>
+            <column name="first_name" type="VARCHAR(100)"/>
+            <column name="last_name" type="VARCHAR(100)"/>
+            <column name="middle_name" type="VARCHAR(100)"/>
+            <column name="gender" type="ENUM('FEMALE', 'MALE', 'OTHER')"/>
+            <column name="country_code" type="VARCHAR(3)"/>
+            <column name="day_of_birth" type="datetime"/>
+            <column name="email" type="VARCHAR(255)"/>
+            <column name="email2" type="VARCHAR(255)"/>
+            <column name="email3" type="VARCHAR(255)"/>
+            <column name="phone_code" type="VARCHAR(6)"/>
+            <column name="phone_number" type="VARCHAR(15)"/>
+            <column name="phone_number2" type="VARCHAR(15)"/>
+            <column name="phone_number3" type="VARCHAR(15)"/>
+            <column defaultValueNumeric="0" name="enabled" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="credentials_non_expired" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="account_non_expired" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column defaultValueNumeric="1" name="account_non_locked" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="created_by" type="VARCHAR(45)"/>
+            <column name="created" type="datetime"/>
+            <column name="last_updated" type="datetime"/>
+            <column name="last_updated_by" type="VARCHAR(45)"/>
+            <column name="versionNo" type="INT"/>
+            <column defaultValueNumeric="0" name="deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="caoky (generated)" id="1477582307969-2" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <createTable tableName="password_history">
+            <column name="id" type="VARCHAR(36)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="failed_login_attempts" type="INT"/>
+            <column name="last_password_changed" type="datetime"/>
+            <column name="last_password_failed" type="datetime"/>
+            <column name="old_passwords" type="LONGBLOB"/>
+            <column name="size" type="INT"/>
+            <column name="created_by" type="VARCHAR(255)"/>
+            <column name="created" type="datetime"/>
+            <column defaultValueNumeric="0" name="deleted" type="BIT(1)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_updated" type="datetime"/>
+            <column name="last_updated_by" type="VARCHAR(255)"/>
+            <column name="versionNo" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet author="caoky (generated)" id="1477582307969-3" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="User"/>
+    </changeSet>
+    <changeSet author="caoky (generated)" id="1477582307969-4" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addPrimaryKey columnNames="id" constraintName="PRIMARY" tableName="password_history"/>
+    </changeSet>
+    <changeSet author="caoky (generated)" id="1477582307969-5" objectQuotingStrategy="QUOTE_ALL_OBJECTS">
+        <addForeignKeyConstraint baseColumnNames="id" baseTableName="password_history"
+                                 constraintName="fk_userhistory_user" deferrable="false" initiallyDeferred="false"
+                                 onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id"
+                                 referencedTableName="User"/>
+    </changeSet>
+</databaseChangeLog>
